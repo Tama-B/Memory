@@ -1,4 +1,4 @@
-const section = document.querySelector('section')
+const section = document.querySelector('section');
 
 
 //Get Data for Cards
@@ -29,11 +29,12 @@ randomizeData()
 let flippedCard1
 let flippedCard2
 
+
 const flipCard = (card) => {
+    //überprüfen, ob klasse existiert
     flippedCardsCounter++
     if (flippedCardsCounter > 2) return
 
-    console.log(flippedCardsCounter);
 
     if (flippedCardsCounter == 1) {
         card.firstElementChild.classList.add('remove');
@@ -48,10 +49,36 @@ const flipCard = (card) => {
 
 }
 
+
+
+// Create Cards
+const createCards = () => {
+    cardData.forEach(element => {
+        let card = document.createElement('div');
+        let front = document.createElement('img')
+        let back = document.createElement('div');
+        front.src = element.imgSrc;
+        card.classList.add('card', 'click');
+        back.classList.add('back')
+        section.appendChild(card);
+        card.appendChild(back);
+        card.appendChild(front);
+        card.source = element;
+        card.addEventListener('click', () => { flipCard(card) })
+
+    });
+}
+
+createCards()
+
 //Compare if same card or not
 
 const compareCards = (card1, card2) => {
     if (card1.source == card2.source) {
+        card1.classList.remove('click');
+        card2.classList.remove('click');
+        //gemeinsame klasse hinzufügen
+        console.log('Du hast ein Paar gefunden!');
         flippedCardsCounter = 0;
     }
     else if (card1.source !== card2.source) {
@@ -63,26 +90,5 @@ const compareCards = (card1, card2) => {
 
     }
 }
-
-// Create Cards
-const createCards = () => {
-    cardData.forEach(element => {
-        let card = document.createElement('div');
-        let front = document.createElement('img')
-        let back = document.createElement('div');
-        front.src = element.imgSrc;
-        card.classList.add('card');
-        back.classList.add('back')
-        section.appendChild(card);
-        card.appendChild(back);
-        card.appendChild(front);
-        card.source = element;
-        card.addEventListener('click', () => flipCard(card))
-
-    });
-}
-
-createCards()
-
 
 
