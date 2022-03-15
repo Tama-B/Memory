@@ -1,8 +1,12 @@
 const section = document.querySelector('section');
+const roundCounterDisplay = document.querySelector('#round_count');
+let timerDisplay = document.querySelector('#time');
+let roundCounter = 0;
 let flippedCard1;
 let flippedCard2;
 allCards = [];
-console.log(allCards);
+foundPairs = [];
+
 
 //Get Data for Cards
 let cardData = [
@@ -53,6 +57,12 @@ resetCards = () => {
     });
 }
 
+
+let countRounds = () => {
+    roundCounter++
+    roundCounterDisplay.innerText = roundCounter;
+}
+
 //Flip the clicked cards
 const flipCard = (card) => {
     if (card.status == 'pairFound') return
@@ -68,6 +78,7 @@ const flipCard = (card) => {
         flippedCardsCounter = 1;
     }
     else if (flippedCardsCounter == 2) {
+        countRounds();
         card.firstElementChild.classList.add('remove');
         card.status = 'flipped';
         blockFlippedCards();
@@ -75,6 +86,9 @@ const flipCard = (card) => {
         compareCards(flippedCard1, flippedCard2);
     }
 }
+
+
+
 
 // Create Cards
 const createCards = () => {
@@ -103,6 +117,9 @@ const compareCards = (card1, card2) => {
     if (card1.source == card2.source) {
         card1.status = 'pairFound';
         card2.status = 'pairFound';
+        foundPairs.push(card1);
+        foundPairs.push(card2);
+        console.log(foundPairs);
         console.log('Du hast ein Paar gefunden!');
         flippedCardsCounter = 0;
     }
@@ -118,5 +135,16 @@ const compareCards = (card1, card2) => {
         }, 1000)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
