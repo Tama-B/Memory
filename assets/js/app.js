@@ -82,7 +82,7 @@ const resetGame = () => {
     startGameBtn.textContent = 'Play again';
     foundPairs = [];
     roundStats.classList.remove('hide');
-    tryStats.textContent = `Runden: ${roundCounter}`;
+    tryStats.textContent = `Versuche: ${roundCounter}`;
     timeStats.textContent = ` Zeit: ${elapsedTime.toLocaleTimeString().slice(3)}`
     roundCounter = 0;
 }
