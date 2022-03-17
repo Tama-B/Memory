@@ -12,12 +12,9 @@
 
 <body>
     <main>
-        <div id="memory_container">
-            <section></section>
-        </div>
         <div id="ui">
             <div class="display_container">
-                <h2>Runden:
+                <h2>Versuche:
                     <span id="round_count">
                         0
                     </span>
@@ -26,11 +23,30 @@
             <div class="display_container">
                 <h2>Zeit:
                     <span id="time">
-                        0
+                        00:00
                     </span>
                 </h2>
             </div>
+
         </div>
+        <div id="memory_container">
+            <section>
+
+            </section>
+            <div id="card_blocker">
+                <div id="stats_container" class="hide">
+                    <h3>Glückwunsch!</h3>
+                    <div id="round_stats">
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div id="btn_container">
+                    <button id="startBtn">Start Game</button>
+                </div>
+            </div>
+        </div>
+
     </main>
 </body>
 
